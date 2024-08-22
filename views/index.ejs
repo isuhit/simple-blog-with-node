@@ -1,0 +1,29 @@
+<%- include('partials/header', { title: 'Home' }) %>
+
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Isuho Blog</h1>  
+
+        <div class="row">
+            <% posts.forEach(post => { %>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= post.title %></h5>
+                            <p class="card-text"><%= post.content.substring(0, 100) %>...</p>
+                            <a href="/post/<%= post.id %>" class="btn btn-info">View</a>
+                            <a href="/editpost/<%= post.id %>" class="btn btn-warning">Edit</a>
+                            <form action="/deletepost/<%= post.id %>?_method= DELETE" method="post">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                              </form>
+                            <!-- <a href="/deletepost/<%= post.id %>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this post?');">Delete</a> -->
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+
+  
+    
+    <%- include('partials/footer') %>

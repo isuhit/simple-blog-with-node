@@ -1,0 +1,51 @@
+<%- include('partials/header', { title:  'Create Post'  }) %>
+
+
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Create a New Post</h1>
+    <form action="/newpost" method="post">
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" class="form-control custom-title" id="title" name="title" placeholder="Enter post title" required>
+        </div>
+        <div class="form-group">
+            <label for="content">Content:</label>
+            <textarea class="form-control custom-content" id="content" name="content" rows="6" placeholder="Enter post content" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary custom-submit">Create Post</button>
+        <a href="/" class="btn btn-secondary ml-2">Cancel</a>
+    </form>
+    <button class="toggle-dark-mode">Toggle Dark Mode</button>
+
+</div>
+    <!-- Custom JS for Dark Mode Toggle -->
+    <script>
+      const toggleButton = document.querySelector('.toggle-dark-mode');
+      const body = document.body;
+      const container = document.querySelector('.container');
+
+      toggleButton.addEventListener('click', () => {
+          body.classList.toggle('dark-mode');
+          container.classList.toggle('dark-mode');
+
+          // Save mode preference in local storage
+          if (body.classList.contains('dark-mode')) {
+              localStorage.setItem('theme', 'dark');
+          } else {
+              localStorage.setItem('theme', 'light');
+          }
+      });
+
+      // Load mode preference from local storage
+      window.addEventListener('DOMContentLoaded', () => {
+          if (localStorage.getItem('theme') === 'dark') {
+              body.classList.add('dark-mode');
+              container.classList.add('dark-mode');
+          }
+      });
+  </script>
+
+    <!-- Bootstrap JS and dependencies -->
+    
+
+    <%- include('partials/footer') %>
