@@ -12,11 +12,11 @@
                             <p class="card-text"><%= post.content.substring(0, 100) %>...</p>
                             <a href="/post/<%= post.id %>" class="btn btn-info">View</a>
                             <a href="/editpost/<%= post.id %>" class="btn btn-warning">Edit</a>
-                            <form action="/deletepost/<%= post.id %>?_method= DELETE" method="post">
-                                <input type="hidden" name="_method" value="DELETE">
-                                <button type="submit" class="btn btn-danger">Delete</button>
+                            <form action="/deletepost/<%= post.id %>?_method=DELETE" method="post">
+                                <!-- <input class="custom-submit" type="submit" name="_method" value="DELETE"> -->
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this post?')" >Delete</button>
                               </form>
-                            <!-- <a href="/deletepost/<%= post.id %>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this post?');">Delete</a> -->
+                            
                         </div>
                     </div>
                 </div>
